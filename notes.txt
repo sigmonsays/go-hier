@@ -1,0 +1,25 @@
+# Show variable
+hier lookup -c example1.yaml exampled.pkg_version
+
+# merge
+hier lookup -c example1.yaml -m mergetest
+
+
+# Default hierarchy:
+# - by fqdn - data/fqdn/{fqdn}.yaml
+# - by domain - data/domain/{domain}.yaml
+# - by pop - data/pop/{pop}.yaml
+# - by env - data/env/{env}.yaml
+# - default  data/default.yaml
+
+# hierarchy:
+#   - name: "by fqdn"
+#     path: "data/fqdn/{{ .Inputs.fqdn }}.yaml"
+#   - name: "by domain"
+#     path: "data/domain/{{ .Inputs.domain }}.yaml"
+#   - name: "by pop"
+#     path: "data/pop/{{ .Inputs.pop }}.yaml"
+#   - name: "by env"
+#     path: "data/env/{{ .Inputs.env }}.yaml"
+#   - name: "default"
+#     path: "data/default.yaml"

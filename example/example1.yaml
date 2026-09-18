@@ -1,0 +1,21 @@
+# Example deployment
+
+hierarchy:
+- name: by-fqdn
+  path: "data/fqdn/{{ .Inputs.fqdn }}.yaml"
+- name: by-domain
+  path: "data/domain/{{ .Inputs.domain }}.yaml"
+- name: by-site
+  path: "data/site/{{ .Inputs.site }}.yaml"
+- name: by-env
+  path: "data/env/{{ .Inputs.env }}.yaml"
+- name: default
+  path: "data/default.yaml"
+
+# The inputs should probably be dynamic but for now we are specifying it here
+inputs:
+  #fqdn: host1.sjc2.example.net
+  fqdn: host1.lax1.example.net
+  domain: lax1.example.net
+  env: production
+  site: lax1

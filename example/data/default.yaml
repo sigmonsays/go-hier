@@ -1,0 +1,10 @@
+# Defaults
+
+exampled:
+  pkg_version: "1.0"
+  items:
+    - foo
+    - bar
+
+mergetest:
+  default_key: foo

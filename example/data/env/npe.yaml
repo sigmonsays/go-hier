@@ -1,0 +1,7 @@
+# npe env
+
+exampled:
+  pkg_version: "1.0.1"
+
+mergetest:
+  default_key: foo
