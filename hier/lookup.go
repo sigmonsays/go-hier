@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	lookupCmd.Flags().StringP("cfg", "c", "", "deployment configuration")
+	lookupCmd.Flags().StringP("cfg", "c", "", "hier configuration")
 	lookupCmd.Flags().BoolP("json", "j", false, "json output")
 	lookupCmd.Flags().BoolP("merge", "m", false, "merge result")
 	// overrides

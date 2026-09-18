@@ -40,7 +40,7 @@ func (me *HierSpec) WithInput(key string, value any) *HierSpec {
 }
 
 func LoadHierSpec(cfgfile string) (*HierSpec, error) {
-	// load the deployment spec
+	// load the spec
 	buf, err := os.ReadFile(cfgfile)
 	if err != nil {
 		return nil, err
