@@ -6,6 +6,7 @@ import (
 )
 
 type HierSpec struct {
+	Debug bool
 
 	// file system we read from
 	FS fs.FS

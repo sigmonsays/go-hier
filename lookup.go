@@ -20,7 +20,9 @@ func Lookup(spec *HierSpec, varname string) (*LookupResult, error) {
 	}
 
 	// debug print the spec
-	slog.Debug("Spec", "spec", spec)
+	if spec.Debug {
+		slog.Debug("Spec", "spec", spec)
+	}
 
 	// go through the spec in order to find value
 	// we take the first match
@@ -29,7 +31,9 @@ func Lookup(spec *HierSpec, varname string) (*LookupResult, error) {
 	found := false
 
 	for _, h := range spec.Hierarchy {
-		slog.Debug("process hierarchy", "name", h.Name)
+		if spec.Debug {
+			slog.Debug("process hierarchy", "name", h.Name)
+		}
 
 		// eval the path template to a real path on disk
 		path, err := evalSpecPath(h.Path, spec)
@@ -37,11 +41,15 @@ func Lookup(spec *HierSpec, varname string) (*LookupResult, error) {
 			return nil, err
 		}
 		if !fileExistsReg(spec.FS, path) {
-			slog.Debug("Path not found", "path", path)
+			if spec.Debug {
+				slog.Debug("Path not found", "path", path)
+			}
 			continue
 		}
 
-		slog.Debug("Got path from template", "path", path, "template", h.Path)
+		if spec.Debug {
+			slog.Debug("Got path from template", "path", path, "template", h.Path)
+		}
 		fbuf, err := fs.ReadFile(spec.FS, path)
 		if err != nil {
 			slog.Debug("ReadFile error", "f", path, "err", err)
@@ -136,7 +144,9 @@ func execJqQuery(spec *HierSpec, varname string, data any) (any, error) {
 			break
 		}
 		type_id := fmt.Sprintf("%T", v)
-		slog.Debug("iter var type", "type_id", type_id)
+		if spec.Debug {
+			slog.Debug("iter var type", "type_id", type_id)
+		}
 
 		// todo: Corce to string
 		// it could be any type here that yaml detects
